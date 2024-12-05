@@ -22,7 +22,7 @@ module.exports = {
   ignorePatterns: ["!**/.server", "!**/.client"],
 
   // Base config
-  extends: ["eslint:recommended"],
+  extends: ["eslint:recommended", "plugin:tailwindcss/recommended", "prettier"],
 
   overrides: [
     // React
@@ -48,6 +48,23 @@ module.exports = {
           typescript: {},
         },
       },
+      rules: {
+        "react/function-component-definition": [
+          "warn",
+          { namedComponents: "function-declaration" },
+        ],
+        "react/jsx-no-leaked-render": ["error", { validStrategies: ["ternary"] }],
+        "react/jsx-max-depth": ["error", { max: 8 }],
+        "react/jsx-no-useless-fragment": "warn",
+        "react/jsx-curly-brace-presence": "warn",
+        "react/no-typos": "warn",
+        "react/display-name": "warn",
+        "react/self-closing-comp": "warn",
+        "react/jsx-sort-props": "warn",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/prop-types": "off",
+      },
     },
 
     // Typescript
@@ -71,6 +88,9 @@ module.exports = {
         "plugin:import/recommended",
         "plugin:import/typescript",
       ],
+      rules: {
+        "@typescript-eslint/no-unused-vars": "warn",
+      },
     },
 
     // Node

@@ -1,13 +1,10 @@
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
-
+import { Links, Meta, MetaFunction, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 import "./tailwind.css";
+
+export const meta: MetaFunction = () => {
+  return [{ title: "REMIX TS BOILERPLATE" }, { name: "description", content: "Welcome to Remix!" }];
+};
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -27,7 +24,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <Meta />
         <Links />
       </head>
